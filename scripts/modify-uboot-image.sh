@@ -30,6 +30,15 @@ dd if=$GITHUB_WORKSPACE/configfiles/rk3568-6.x-uboot.img of=openwrt-rockchip-arm
 gzip openwrt-rockchip-armv8-bdy_g18-pro-squashfs-sysupgrade.img
 
 
+# 本电pcdn路由器 bendian_bd-one
+gzip -d openwrt-rockchip-armv8-bendian_bd-one-squashfs-sysupgrade.img.gz
+ls
+
+dd if=$GITHUB_WORKSPACE/configfiles/rk3568-6.x-uboot.img of=openwrt-rockchip-armv8-bendian_bd-one-squashfs-sysupgrade.img bs=512 seek=64 conv=notrunc
+
+gzip openwrt-rockchip-armv8-bendian_bd-one-squashfs-sysupgrade.img
+
+
 rm -f sha256sums
 find * -maxdepth 1 -type f ! -path "packages/*" -exec sha256sum {} + > sha256sums
 
